@@ -1,9 +1,17 @@
-const form = document.querySelector(".js-form"),
-input = form.querySelector("input"),
-greeting = document.querySelector(".js-greetings");
+const form = document.querySelector("#login-form"),
+      input = form.querySelector("input"),
+      greeting = document.querySelector("#greeting"),
+      logoutBtn = document.querySelector("#logout-btn");
 
 const LS_USER = "currentUser",
-CN_DISPLAY_BLOCK = "display-block";
+      CN_DISPLAY_BLOCK = "display-block";
+
+function logout(event) {
+  event.preventDefault();
+
+  localStorage.clear();
+  location.reload();
+}
 
 function savaName(text) {
   localStorage.setItem(LS_USER, text);
@@ -14,6 +22,7 @@ function handleSubmit(event) {
 
   const currentValue = input.value;
   paintGreeting(currentValue);
+  paintLogout();
   savaName(currentValue);
 }
 
@@ -28,6 +37,12 @@ function paintGreeting(text) {
   greeting.innerText = `Hello ${text}`;
 }
 
+function paintLogout() {
+  logoutBtn.classList.remove("hidden");
+  logoutBtn.classList.add(CN_DISPLAY_BLOCK);
+  logoutBtn.addEventListener("click", logout);
+}
+
 function loadName() {
   const currentUser = localStorage.getItem(LS_USER);
   
@@ -35,6 +50,7 @@ function loadName() {
     askForName();
   } else {
     paintGreeting(currentUser);
+    paintLogout();
   }
 }
 

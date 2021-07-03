@@ -3,26 +3,31 @@
   <head>
     <title>Tilte</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="js-clock">
-      <h1>00:00</h1>
+    <div id="clock">
+      <h1>00:00:00</h1>
     </div>
-    <form class="js-form form">
+    
+    <form id="login-form" class="hidden">
       <input type="text" placeholder="What is your name?" />
     </form>
-    <h4 class="js-greetings greetings"></h4>
-    <form class="js-toDoForm">
+
+    <h4 id="greeting" class="hidden"></h4>
+    <button id="logout-btn" class="hidden">logout</button>
+
+    <form id="todo-form" class="js-toDoForm">
       <input type="text" placeholder="Write a to do" />
     </form>
-    <ul class="js-toDoList">
-    </ul>
-    <spanc class="js-weather"></spanc>
-    <script src="clock.js"></script>
-    <script src="greeting.js"></script>
-    <script src="todo.js"></script>
-    <script src="background.js"></script>
-    <script src="weather.js"></script>
+    <ul id="todo-list" class="js-toDoList"></ul>
+
+    <spanc id="weather" class="js-weather"></spanc>
+
+    <script src="js/clock.js"></script>
+    <script src="js/greeting.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/weather.js"></script>
   </body>
 </html>

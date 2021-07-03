@@ -2,8 +2,7 @@ body {
   background-color: #1e272e;
 }
 
-.form,
-.greetings {
+.hidden {
   display: none;
 }
 
