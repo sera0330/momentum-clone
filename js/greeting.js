@@ -1,10 +1,17 @@
 const form = document.querySelector("#login-form"),
       input = form.querySelector("input"),
       greeting = document.querySelector("#greeting"),
+      todo = document.querySelector("#todo"),
       logoutBtn = document.querySelector("#logout-btn");
 
 const LS_USER = "currentUser",
       CN_DISPLAY_BLOCK = "display-block";
+
+function askLogout(event) {
+  if (confirm("Do you want to logout?")) {
+    logout(event);
+  }
+}
 
 function logout(event) {
   event.preventDefault();
@@ -22,7 +29,6 @@ function handleSubmit(event) {
 
   const currentValue = input.value;
   paintGreeting(currentValue);
-  paintLogout();
   savaName(currentValue);
 }
 
@@ -34,13 +40,9 @@ function askForName() {
 function paintGreeting(text) {
   form.classList.remove(CN_DISPLAY_BLOCK);
   greeting.classList.add(CN_DISPLAY_BLOCK);
-  greeting.innerText = `Hello ${text}`;
-}
-
-function paintLogout() {
-  logoutBtn.classList.remove("hidden");
-  logoutBtn.classList.add(CN_DISPLAY_BLOCK);
-  logoutBtn.addEventListener("click", logout);
+  greeting.innerText = `Hello, ${text}.`;
+  greeting.addEventListener("click", askLogout);
+  todo.classList.remove("hidden");
 }
 
 function loadName() {
@@ -50,7 +52,6 @@ function loadName() {
     askForName();
   } else {
     paintGreeting(currentUser);
-    paintLogout();
   }
 }
 

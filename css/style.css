@@ -1,30 +1,281 @@
 body {
   background-color: #1e272e;
+  color: #fff;
+  font-family: system-ui, "Apple SD Gothic Neo", AppleGothic, sans-serif;
 }
 
 .hidden {
   display: none;
 }
 
+.cusor-default {
+  cursor: default;
+}
+
 .display-block {
   display: block;
 } 
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.background {
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  transition: transform 0.3s ease-out;
 }
 
-.background {
+.background, .background-item {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.apps {
+  opacity: 1;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  /* transition: opacity .3s var(--a-curve); */
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#login, .center .time, .greeting, .intro {
+  text-align: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.top-row {
+  height: 60px;
+  display: flex;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+
+.top-right {
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: right;
+}
+.top-center, .top-left, .top-right {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+}
+
+.weather {
+  order: 1;
+}
+
+.logout {
+  order: 0;
+}
+
+.app-container {
+  --app-container-transition: opacity 0.5s ease;
+  display: inline-block;
+  transition: var(--app-container-transition);
+}
+.app-container, .app-dash-icon, .app-wrapper, .toggle, .logout {
+  position: relative;
+}
+
+.top-right .metric-item {
+  padding: 11px 10px 10px;
+}
+
+.weather .app-dash {
+  cursor: default;
+  order: 1;
+}
+
+.weather .location {
+  outline: 0;
+}
+
+.app-dash .metric-stat {
+  margin-right: -1px;
+  white-space: nowrap;
+}
+.metric-stat {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.metric-item, .metric-stat, .search-wrapper .input-wrapper {
+  position: relative;
+}
+
+.metric-label {
+  /* display: inline-block; */
+  font-size: .5125rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label, .metric-label-with-sub {
+  margin: 0;
+  padding: 0 0 3px;
+  overflow-wrap: break-word;
+  transition: opacity .5s var(--a-curve);
+  word-break: break-word;
+  vertical-align: top;
+}
+
+.app-dash .metric-label-name {
+  opacity: .85;
+}
+
+.center-above {
+  flex: 1 1 35%;
+}
+
+.center-below {
+  flex: 1 1 50%;
+}
+
+.center-above, .center-below {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.center-col {
+  padding-top: 0.5em;
+}
+
+.bottom-row {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.center .clock {
+  margin: -3px 0;
+  position: relative;
+}
+
+.has-3-col {
+  display: flex;
+}
+
+.has-3-col .left {
+  justify-content: flex-end;
+}
+
+.has-3-col .side-col {
+  flex: 1 0 50px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.clock .time {
+  cursor: default;
+  font-size: 700%;
+}
+
+.center .time, .clock .format, .greeting {
+  font-weight: 500;
+}
+
+.greeting .content {
+  display: inline;
+}
+
+#login, .greeting .content, .intro {
+  font-size: 300%;
+}
+
+.focus-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.prompt {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+  max-width: 87.5%;
+}
+
+.prompt h3 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0;
+  line-height: normal;
+}
+
+.prompt .todo-input, .prompt .hidden-data {
   width: 100%;
-  height: 100%;
-  z-index: -1;
-  animation: fadeIn 0.5s linear;
+  padding-top: 4px;
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.2;
+  font-weight: 500;
+  outline: none;
+  text-align: center;
+  transition: border-color .2s ease;
+}
+
+#login-form input {
+  width: 100%;
+  padding-top: 4px;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 0.8em;
+  line-height: 1.2;
+  font-weight: 500;
+  outline: none;
+  text-align: center;
+  transition: border-color .2s ease;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.todo {
+  display: flex;
+  text-align: left;
+  padding: 3px 0 2px;
+}
+
+.todo-text {
+  padding: 0 5px;
+}
+
+.todo-checked {
+  text-decoration: line-through;
+}
+
+.trash {
+  opacity: 50%;
+  padding: 0px 5px;
 }

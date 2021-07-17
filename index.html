@@ -4,26 +4,70 @@
     <title>Tilte</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   </head>
   <body>
-    <div id="clock">
-      <h1>00:00:00</h1>
+    <div class="main-view" style="display: block;">
+      <div class="backgrounds">
+        <div class="background">
+          <div class="background-item">
+          </div>
+        </div>
+      </div>
+      <div class="apps">
+        <div class="top-row">
+          <div class="region top-right">
+            <div class="app-container weather metric-item">
+              <div class="app-dash">
+                <div class="metric-stat">
+                  <span id="weather-temp"></span>
+                </div>
+                <div class="location metric-label data">
+                  <spanc id="weather-desc" class="metric-label-name"></spanc>
+                  <spanc id="weather-loc" class="js-weather metric-label-name"></spanc>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="region center-above"></div>
+        <div class="region center">
+          <div class="clock has-3-col">
+            <div class="side-col left"></div>
+            <div class="center-col">
+              <div id="clock" class="time">00:00:00</div>
+            </div>
+            <div class="side-col right"></div>
+          </div>
+          <div class="greeting has-3-col">
+            <div class="side-col left"></div>
+            <div class="center-col">
+              <div class="content">
+                <form id="login-form" class="hidden">
+                  <div class="cusor-default">What is your name?</div> 
+                  <input type="text"/>
+                </form>
+                <div id="greeting" class="hidden cusor-default"></div>
+                <button id="logout-btn" class="hidden logout metric-item">logout</button>
+              </div>
+            </div>
+            <div class="side-col right"></div>
+          </div>
+        </div>
+        <div class="region center-below">
+          <div class="focus-wrapper">
+            <div id="todo" class="prompt hidden">
+              <h3 class="cusor-default">TO DO LIST</h3> 
+              <form id="todo-form" class="todo-form">
+                <input type="text" class="todo-input"/>
+              </form>
+              <ul id="todo-list" class="todo-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-row"></div>
+      </div>
     </div>
-    
-    <form id="login-form" class="hidden">
-      <input type="text" placeholder="What is your name?" />
-    </form>
-
-    <h4 id="greeting" class="hidden"></h4>
-    <button id="logout-btn" class="hidden">logout</button>
-
-    <form id="todo-form" class="js-toDoForm">
-      <input type="text" placeholder="Write a to do" />
-    </form>
-    <ul id="todo-list" class="js-toDoList"></ul>
-
-    <spanc id="weather" class="js-weather"></spanc>
-
     <script src="js/clock.js"></script>
     <script src="js/greeting.js"></script>
     <script src="js/todo.js"></script>
